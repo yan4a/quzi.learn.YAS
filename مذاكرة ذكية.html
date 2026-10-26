@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مذاكرة ذكية — اختبر نفسك</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1420;--surf:#171d2d;--surf2:#1f2740;--bd:#2b3552;--tx:#e6eaf5;--mut:#8f9ab8;--pri:#7c9cff;--q:#7c9cff;--a:#4fd1a5;--ok:#3ecf8e;--bad:#ff6b7a;--warn:#f5b84b;--r:16px;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f3f5fb;--surf:#fff;--surf2:#eef1fa;--bd:#d9dff0;--tx:#1b2238;--mut:#667090;--pri:#4a6cf7;--q:#4a6cf7;--a:#0f9d76;--ok:#12a36b;--bad:#e0364a;--warn:#c98a10;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f3f5fb;--surf:#fff;--surf2:#eef1fa;--bd:#d9dff0;--tx:#1b2238;--mut:#667090;--pri:#4a6cf7;--q:#4a6cf7;--a:#0f9d76;--ok:#12a36b;--bad:#e0364a;--warn:#c98a10;color-scheme:light}
+:root[data-theme="dark"]{color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font-family:"Tajawal",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.7;min-height:100%}
+.wrap{max-width:860px;margin:0 auto;padding:16px}
+header{display:flex;align-items:center;gap:10px;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
+.logo{font-size:1.35rem;font-weight:700}.logo b{color:var(--pri)}
+nav{display:flex;gap:6px;background:var(--surf);padding:4px;border-radius:999px;border:1px solid var(--bd)}
+nav button,.btn{font:inherit;border:0;cursor:pointer;border-radius:999px;padding:8px 18px;background:transparent;color:var(--mut);transition:.15s}
+nav button.on{background:var(--pri);color:#fff}
+.icon{width:42px;height:42px;border-radius:50%;border:1px solid var(--bd);background:var(--surf);color:var(--tx);cursor:pointer;font-size:1.1rem}
+.panel{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.panel.q{border-inline-start:5px solid var(--q)}.panel.a{border-inline-start:5px solid var(--a)}
+.lab{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:8px}
+.q .lab{color:var(--q)}.a .lab{color:var(--a)}
+textarea{width:100%;font:inherit;font-size:1.05rem;background:var(--surf2);color:var(--tx);border:1px solid var(--bd);border-radius:12px;padding:12px;resize:vertical;min-height:84px;outline:none}
+textarea:focus{border-color:var(--pri)}
+.btn{background:var(--pri);color:#fff;font-weight:700}.btn.sec{background:var(--surf2);color:var(--tx);border:1px solid var(--bd)}.btn.g{background:var(--a)}.btn.r{background:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.sp{flex:1}
+.kb{margin-top:10px;border-top:1px dashed var(--bd);padding-top:10px}
+.kbt{display:flex;gap:6px;margin-bottom:8px}.kbt button{font:inherit;font-size:.85rem;border:1px solid var(--bd);background:var(--surf2);color:var(--mut);border-radius:8px;padding:3px 12px;cursor:pointer}.kbt button.on{color:#fff;background:var(--pri);border-color:var(--pri)}
+.keys{display:flex;flex-wrap:wrap;gap:6px;direction:ltr}
+.k{min-width:42px;height:40px;font-size:1.05rem;border-radius:10px;border:1px solid var(--bd);background:var(--surf2);color:var(--tx);cursor:pointer;font-family:system-ui,"Cambria Math",serif;padding:0 8px}
+.k:hover{border-color:var(--pri)}.k.w{background:var(--pri);color:#fff;border-color:var(--pri)}
+.card{display:flex;gap:12px;align-items:flex-start;padding:12px;border:1px solid var(--bd);border-radius:12px;margin-bottom:10px;background:var(--surf2)}
+.card .t{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}.card .t small{display:block;color:var(--mut)}
+.card .qq{color:var(--q);font-weight:700}.card .aa{color:var(--a)}
+.mini{border:0;background:transparent;color:var(--mut);cursor:pointer;font-size:1rem}
+.mut{color:var(--mut)}.empty{text-align:center;color:var(--mut);padding:26px}
+.tbar{height:8px;background:var(--surf2);border-radius:9px;overflow:hidden;margin:8px 0}.tbar i{display:block;height:100%;background:var(--pri);transition:width .25s linear}
+.timer{font-variant-numeric:tabular-nums;font-size:1.3rem;font-weight:700}.timer.low{color:var(--bad)}
+.qtext{font-size:1.3rem;font-weight:500;white-space:pre-wrap;word-break:break-word}
+.fb{border-radius:var(--r);padding:14px;margin-bottom:14px;border:1px solid var(--bd);background:var(--surf)}
+.fb.ok{border-color:var(--ok)}.fb.no{border-color:var(--bad)}
+.verdict{font-size:1.25rem;font-weight:700}.ok .verdict{color:var(--ok)}.no .verdict{color:var(--bad)}
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.cmp div{background:var(--surf2);border-radius:10px;padding:10px;white-space:pre-wrap;word-break:break-word}.cmp span{display:block;font-size:.8rem;color:var(--mut)}
+@media(max-width:560px){.cmp{grid-template-columns:1fr}}
+.big{font-size:3rem;font-weight:700;line-height:1.2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0;text-align:center}.stats div{background:var(--surf2);border-radius:12px;padding:10px}
+select,input[type=checkbox]{font:inherit}select{background:var(--surf2);color:var(--tx);border:1px solid var(--bd);border-radius:10px;padding:6px 10px}
+.hide{display:none!important}
+.res{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.res:last-child{border:0}.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.spin{display:inline-block;width:16px;height:16px;border:3px solid var(--bd);border-top-color:var(--pri);border-radius:50%;animation:s .8s linear infinite;vertical-align:middle;margin-inline-end:6px}@keyframes s{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="logo">📚 مذاكرة<b>ذكية</b></div>
+  <nav><button id="tAdd" class="on">بطاقاتي</button><button id="tTest">اختبار</button></nav>
+  <button class="icon" id="themeBtn" title="الوضع الداكن / الفاتح">🌓</button>
+</header>
+
+<main id="vAdd">
+  <div class="panel q"><div class="lab">❓ السؤال</div><textarea id="qIn" placeholder="اكتب السؤال هنا… مثال: ما عاصمة فلسطين؟"></textarea></div>
+  <div class="panel a"><div class="lab">✅ الإجابة الصحيحة</div><textarea id="aIn" placeholder="اكتب الإجابة النموذجية… مثال: القدس"></textarea></div>
+  <div class="panel"><div class="kb" id="kb1" style="border:0;margin:0;padding:0"></div></div>
+  <div class="row" style="margin-bottom:14px"><button class="btn g" id="addBtn">+ حفظ البطاقة</button><button class="btn sec" id="goTest">ابدأ الاختبار ▶</button><span class="mut" id="msg"></span></div>
+  <div class="panel"><div class="lab">🗂️ بطاقاتي (<span id="cnt">0</span>)</div><div id="list"></div></div>
+</main>
+
+<main id="vTest" class="hide"></main>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const e=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function load(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(x){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(x){}}
+let cards=load('cards',[]),cfg=Object.assign({limit:60,shuffle:true,theme:null},load('cfg',{}));
+let last=null,editId=null,T=null,sampleP=null;
+if(cfg.theme)document.documentElement.dataset.theme=cfg.theme;
+$('#themeBtn').onclick=()=>{const dark=document.documentElement.dataset.theme?document.documentElement.dataset.theme==='dark':!matchMedia('(prefers-color-scheme:light)').matches;cfg.theme=dark?'light':'dark';document.documentElement.dataset.theme=cfg.theme;save('cfg',cfg)};
+
+/* ---------- keyboard ---------- */
+const KB={
+'رياضيات':[['½','(1)/(2)',1],['a/b','()/()',1],['x²','²'],['x³','³'],['xⁿ','^()',2],['√','√()',2],['∛','∛()',2],['π'],['±'],['×'],['÷'],['·'],['=' ],['≠'],['≈'],['<'],['>'],['≤'],['≥'],['( )','()',1],['|x|','||',1],['∞'],['∑'],['∫'],['∂'],['lim','lim '],['log','log()',4],['ln','ln()',3],['sin','sin()',4],['cos','cos()',4],['tan','tan()',4],['x₁','₁'],['xₙ','ₙ'],['θ'],['°'],['%'],['∈'],['∪'],['∩'],['⊂'],['ℝ'],['ℕ'],['ℤ'],['⇒'],['∴'],['f(x)','f()',2]],
+'فيزياء':[['v⃗','v\u20D7'],['F⃗','F\u20D7'],['a⃗','a\u20D7'],['→','→'],['î','î'],['ĵ','ĵ'],['k̂','k̂'],['|v⃗|','|v\u20D7|'],['A⃗·B⃗','A\u20D7·B\u20D7'],['A⃗×B⃗','A\u20D7×B\u20D7'],['∇','∇'],['Δ'],['α'],['β'],['γ'],['λ'],['μ'],['ω'],['Ω'],['φ'],['ρ'],['σ'],['τ'],['ε'],['η'],['∥'],['⊥'],['°'],['m/s','m/s'],['m/s²','m/s²'],['N','N'],['J','J'],['W','W'],['Hz','Hz'],['kg','kg'],['10ⁿ','×10^()',5],['−','−'],['⁻¹','⁻¹'],['⁻²','⁻²']]
+};
+function kbHTML(id){return `<div class="kbt">${Object.keys(KB).map((n,i)=>`<button type="button" data-g="${n}" class="${i?'':'on'}">${n}</button>`).join('')}</div><div class="keys" data-id="${id}"></div>`}
+function fillKeys(box,g){box.querySelector('.keys').innerHTML=KB[g].map(k=>`<button type="button" class="k${k[1]&&k[1].includes('(')?' w':''}" data-t="${e(k[1]||k[0])}" data-c="${k[2]??''}">${e(k[0])}</button>`).join('')}
+function mountKB(sel){const b=$(sel);b.innerHTML=kbHTML(sel);fillKeys(b,Object.keys(KB)[0])}
+document.addEventListener('mousedown',ev=>{if(ev.target.closest('.k,.kbt button'))ev.preventDefault()});
+document.addEventListener('focusin',ev=>{if(ev.target.tagName==='TEXTAREA')last=ev.target});
+document.addEventListener('click',ev=>{
+  const g=ev.target.closest('.kbt button');if(g){const b=g.closest('.kb');b.querySelectorAll('.kbt button').forEach(x=>x.classList.toggle('on',x===g));fillKeys(b,g.dataset.g);return}
+  const k=ev.target.closest('.k');if(!k)return;
+  const el=last&&document.contains(last)&&!last.disabled?last:document.querySelector('textarea:not([disabled])');if(!el)return;
+  const s=el.selectionStart??el.value.length,en=el.selectionEnd??s,t=k.dataset.t;
+  el.setRangeText(t,s,en,'end');if(k.dataset.c!==''){const p=s+Number(k.dataset.c);el.setSelectionRange(p,p)}el.focus();last=el});
+
+/* ---------- cards ---------- */
+function renderList(){
+  $('#cnt').textContent=cards.length;
+  $('#list').innerHTML=cards.length?cards.map((c,i)=>`<div class="card"><div class="t"><div class="qq">${i+1}. ${e(c.q)}</div><div class="aa"><small>الإجابة:</small>${e(c.a)}</div></div><button class="mini" data-ed="${c.id}" title="تعديل">✏️</button><button class="mini" data-del="${c.id}" title="حذف">🗑️</button></div>`).join(''):'<div class="empty">ما في بطاقات بعد. أضف أول سؤال لك 👆</div>';
+}
+$('#list').onclick=ev=>{
+  const d=ev.target.closest('[data-del]');if(d){cards=cards.filter(c=>c.id!==d.dataset.del);save('cards',cards);renderList();return}
+  const m=ev.target.closest('[data-ed]');if(m){const c=cards.find(x=>x.id===m.dataset.ed);editId=c.id;$('#qIn').value=c.q;$('#aIn').value=c.a;$('#addBtn').textContent='💾 تحديث البطاقة';scrollTo({top:0,behavior:'smooth'})}};
+function flash(t){$('#msg').textContent=t;setTimeout(()=>$('#msg').textContent='',2200)}
+$('#addBtn').onclick=()=>{
+  const q=$('#qIn').value.trim(),a=$('#aIn').value.trim();
+  if(!q||!a){flash('اكتب السؤال والإجابة أولاً');return}
+  if(editId){const c=cards.find(x=>x.id===editId);c.q=q;c.a=a;editId=null;$('#addBtn').textContent='+ حفظ البطاقة'}
+  else cards.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),q,a});
+  save('cards',cards);$('#qIn').value='';$('#aIn').value='';$('#qIn').focus();renderList();flash('تم الحفظ ✓')};
+$('#goTest').onclick=()=>show('test');
+
+/* ---------- tabs ---------- */
+function show(v){$('#vAdd').classList.toggle('hide',v!=='add');$('#vTest').classList.toggle('hide',v!=='test');$('#tAdd').classList.toggle('on',v==='add');$('#tTest').classList.toggle('on',v==='test');if(v==='test'){stopT();setup()}}
+$('#tAdd').onclick=()=>show('add');$('#tTest').onclick=()=>show('test');
+
+/* ---------- grading ---------- */
+function norm(s){return String(s).toLowerCase().replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').replace(/[٠-٩]/g,d=>d.charCodeAt(0)-1632).replace(/[۰-۹]/g,d=>d.charCodeAt(0)-1776).replace(/٫|،(?=\d)/g,'.').replace(/[^\p{L}\p{N}.\/^+\-*=<>()√π²³°]/gu,' ').replace(/(^|\s)ال(?=\S{2})/g,'$1').replace(/\s+/g,' ').trim()}
+function num(s){let t=norm(s).replace(/\s/g,'').replace(/^\((.*)\)$/,'$1').replace(/\)\/\(/,'/').replace(/^\(([^()]*)\)\/\(([^()]*)\)$/,'$1/$2');const m=t.match(/^(-?\d+(?:\.\d+)?)(?:\/(\d+(?:\.\d+)?))?$/);if(!m)return null;return m[2]?(+m[1])/(+m[2]):+m[1]}
+function lev(a,b){const m=a.length,n=b.length;if(!m||!n)return Math.max(m,n);let p=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const c=[i];for(let j=1;j<=n;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[n]}
+async function getSample(){if(sampleP)return sampleP;sampleP=(async()=>{try{return window.claude?await claude.use('sample'):null}catch(x){return null}})();return sampleP}
+async function grade(c,ans){
+  if(!ans.trim())return{ok:false,note:'ما في إجابة.'};
+  const A=norm(c.a),B=norm(ans);
+  if(A===B||A.replace(/ /g,'')===B.replace(/ /g,''))return{ok:true,note:'مطابقة للإجابة النموذجية.'};
+  const x=num(c.a),y=num(ans);
+  if(x!==null&&y!==null)return Math.abs(x-y)<1e-9*Math.max(1,Math.abs(x))?{ok:true,note:'القيمة العددية متطابقة.'}:{ok:false,note:'القيمة العددية مختلفة.'};
+  const sm=await getSample();
+  if(sm){try{
+    const r=await sm.json(`أنت مصحح اختبارات متسامح لكن دقيق. قارن إجابة الطالب بالإجابة النموذجية للسؤال.\nاعتبر الإجابة صحيحة إذا كان المعنى والمضمون نفسه، وتجاهل التفاصيل التافهة: الهمزات، التشكيل، "ال" التعريف، الأخطاء الإملائية الطفيفة، اختلاف ترتيب الكلمات، الاختصار، أو الإضافات الصحيحة غير الضرورية.\nلكن اعتبرها خاطئة إذا اختلف المعنى أو أي رقم أو قيمة أو اسم أو اتجاه أو إشارة (+/−) أو وحدة جوهرية، أو إذا كانت ناقصة بشكل يفقدها المعنى المطلوب. الكسور والأعداد المتكافئة (1/2 = 0.5 = ٠٫٥) متساوية.\n\nالسؤال: ${c.q}\nالإجابة النموذجية: ${c.a}\nإجابة الطالب: ${ans}\n\nأجب بـ JSON فقط بهذا الشكل: {"correct":true أو false,"note":"جملة عربية قصيرة جداً تشرح السبب"}`,{modelTier:'quick',cache:false});
+    return{ok:!!r.correct,note:r.note||'',ai:true}}catch(x){}}
+  const sim=1-lev(A,B)/Math.max(A.length,B.length);
+  return sim>=0.82?{ok:true,note:'قريبة جداً من الإجابة (فرق طفيف).'}:{ok:false,note:'الإجابة تختلف عن النموذجية.'}}
+
+/* ---------- test ---------- */
+const V=$('#vTest');
+function stopT(){if(T&&T.iv)clearInterval(T.iv)}
+const fmt=s=>{s=Math.max(0,Math.round(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
+function setup(){
+  T=null;
+  if(!cards.length){V.innerHTML='<div class="panel empty">أضف بطاقات أولاً من تبويب «بطاقاتي» 📝</div>';return}
+  V.innerHTML=`<div class="panel"><div class="lab">🎯 إعدادات الاختبار</div><p class="mut" style="margin-top:0">عدد الأسئلة: <b>${cards.length}</b></p>
+  <div class="row"><label>⏱️ وقت كل سؤال: <select id="lim">${[[30,'30 ثانية'],[60,'دقيقة'],[120,'دقيقتان'],[300,'5 دقائق'],[0,'بدون حد (عدّاد فقط)']].map(o=>`<option value="${o[0]}" ${o[0]==cfg.limit?'selected':''}>${o[1]}</option>`).join('')}</select></label>
+  <label><input type="checkbox" id="shf" ${cfg.shuffle?'checked':''}> ترتيب عشوائي</label></div>
+  <p style="margin-bottom:0"><button class="btn" id="go">ابدأ الاختبار ▶</button></p></div>`;
+  $('#go').onclick=()=>{cfg.limit=+$('#lim').value;cfg.shuffle=$('#shf').checked;save('cfg',cfg);start(cards.slice())}}
+function start(list){
+  if(cfg.shuffle)list.sort(()=>Math.random()-.5);
+  T={list,i:0,res:[],iv:null,t0:0,busy:false};ask()}
+function ask(){
+  const c=T.list[T.i];T.busy=false;
+  V.innerHTML=`<div class="row" style="margin-bottom:8px"><b>سؤال ${T.i+1} / ${T.list.length}</b><span class="sp"></span><span class="timer" id="tm">0:00</span></div><div class="tbar ${cfg.limit?'':'hide'}"><i id="tb" style="width:100%"></i></div>
+  <div class="panel q"><div class="lab">❓ السؤال</div><div class="qtext">${e(c.q)}</div></div>
+  <div class="panel a"><div class="lab">✍️ إجابتك</div><textarea id="ans" placeholder="اكتب إجابتك هنا…"></textarea><div class="kb" id="kb2"></div></div>
+  <div class="row"><button class="btn" id="sub">تحقق من الإجابة ✓</button><button class="btn sec" id="skip">تخطي</button><button class="btn sec" id="quit">إنهاء</button></div>`;
+  mountKB('#kb2');$('#ans').focus();
+  T.t0=Date.now();stopT();
+  T.iv=setInterval(()=>{const s=(Date.now()-T.t0)/1000,tm=$('#tm');if(!tm)return;
+    if(cfg.limit){const r=cfg.limit-s;tm.textContent=fmt(Math.ceil(r));tm.classList.toggle('low',r<=10);$('#tb').style.width=Math.max(0,r/cfg.limit*100)+'%';if(r<=0)submit(true)}
+    else tm.textContent=fmt(s)},250);
+  $('#sub').onclick=()=>submit(false);
+  $('#skip').onclick=()=>{record(c,'',{ok:false,note:'تم تخطي السؤال.'});next()};
+  $('#quit').onclick=()=>{stopT();finish()}}
+function elapsed(){return Math.min((Date.now()-T.t0)/1000,cfg.limit||1e9)}
+function record(c,ans,g){T.res.push({c,ans,ok:g.ok,note:g.note,time:elapsed()})}
+async function submit(timeout){
+  if(T.busy)return;T.busy=true;stopT();
+  const c=T.list[T.i],ans=($('#ans')||{}).value||'',time=elapsed();
+  $('#sub').disabled=true;$('#sub').innerHTML='<span class="spin"></span>جارٍ التصحيح…';$('#ans').disabled=true;
+  const g=await grade(c,ans);T.res.push({c,ans,ok:g.ok,note:g.note,time,timeout});
+  feedback(T.res[T.res.length-1])}
+function feedback(r){
+  const last=T.i>=T.list.length-1;
+  V.innerHTML=`<div class="fb ${r.ok?'ok':'no'}"><div class="verdict">${r.ok?'✅ إجابة صحيحة':'❌ إجابة غير صحيحة'}${r.timeout?' (انتهى الوقت)':''}</div>
+  <div class="mut">${e(r.note||'')} • الوقت: ${fmt(r.time)}</div>
+  <div class="panel q" style="margin:10px 0 0"><div class="lab">❓ السؤال</div><div style="white-space:pre-wrap">${e(r.c.q)}</div></div>
+  <div class="cmp"><div><span>إجابتك</span>${e(r.ans||'— بدون إجابة —')}</div><div><span>الإجابة الصحيحة</span>${e(r.c.a)}</div></div>
+  <button class="btn sec" id="ov">${r.ok?'اعتبرها خاطئة':'أنا محقّ، اعتبرها صحيحة'}</button></div>
+  <div class="row"><button class="btn" id="nx">${last?'عرض النتيجة 🏁':'السؤال التالي ◀'}</button></div>`;
+  $('#ov').onclick=()=>{r.ok=!r.ok;r.note='تم تعديل التقييم يدوياً.';feedback(r)};
+  $('#nx').onclick=next}
+function next(){T.i++;T.i>=T.list.length?finish():ask()}
+function finish(){
+  stopT();const R=T.res,ok=R.filter(x=>x.ok).length,n=R.length||1,avg=R.reduce((s,x)=>s+x.time,0)/n,pct=Math.round(ok/n*100);
+  const bad=R.filter(x=>!x.ok).map(x=>x.c);
+  V.innerHTML=`<div class="panel" style="text-align:center"><div class="big" style="color:${pct>=60?'var(--ok)':'var(--bad)'}">${pct}%</div><div>${pct>=90?'ممتاز! 🌟':pct>=60?'جيد، كمّل 💪':'لا بأس، كرّر وراح تتحسن 📈'}</div>
+  <div class="stats"><div><b>${ok}</b><br><span class="mut">صحيحة</span></div><div><b>${R.length-ok}</b><br><span class="mut">خاطئة</span></div><div><b>${fmt(avg)}</b><br><span class="mut">متوسط الوقت</span></div></div>
+  <div class="row" style="justify-content:center">${bad.length?'<button class="btn r" id="rt">أعد الأسئلة الخاطئة ↻</button>':''}<button class="btn" id="again">اختبار جديد</button></div></div>
+  <div class="panel"><div class="lab">📋 مراجعة</div>${R.map((x,i)=>`<div class="res"><span class="dot" style="background:var(--${x.ok?'ok':'bad'})"></span><div style="flex:1;min-width:0"><div style="white-space:pre-wrap;word-break:break-word"><b>${i+1}.</b> ${e(x.c.q)}</div>${x.ok?'':`<small class="mut">إجابتك: ${e(x.ans||'—')} • الصحيحة: <span style="color:var(--a)">${e(x.c.a)}</span></small>`}</div><span class="mut">${fmt(x.time)}</span></div>`).join('')}</div>`;
+  if($('#rt'))$('#rt').onclick=()=>start(bad.slice());$('#again').onclick=setup}
+
+mountKB('#kb1');renderList();
+</script>
+</body>
+</html>
